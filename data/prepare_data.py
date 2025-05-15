@@ -35,7 +35,7 @@ def save_nifti_image(data, filename):
 
 def rename_files():
     """Rename files in the input directory."""
-    nnUNet_raw = path.join(input_path, 'nnUNet_raw')
+    nnUNet_raw = path.join('nnUNet_raw')
     try:
         mkdir(nnUNet_raw)
     except:

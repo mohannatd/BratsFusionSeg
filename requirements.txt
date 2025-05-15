@@ -2,3 +2,4 @@ nnunetv2
 torch
 torchvision
 imutils
+opencv-python

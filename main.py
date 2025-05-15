@@ -1,8 +1,16 @@
 from data.prepare_data import prepare_dataset
 from model.inference import run_inference
 import argparse
+import shutil
+import os
+
+def copy_to_workspace(input_path, target_name):
+    target_path = os.path.join(os.getcwd(), target_name)
+    shutil.copy(input_path, target_path)
+    return target_path
 
 def main(t1c_path, t1n_path, t2w_path, t2f_path, output_path):
+    t2f_path = copy_to_workspace(t2f_path, "t2f.nii.gz")
     prepare_dataset(t1c_path, t1n_path, t2w_path, t2f_path)
     run_inference(output_path)
 
