@@ -2,7 +2,6 @@ from os import mkdir, path
 import shutil
 import nibabel as nib
 import numpy as np
-from data.paths import INPUT_DIR
 from model.fusion import Fusion
 import imutils
 
@@ -32,19 +31,19 @@ def save_nifti_image(data, filename):
     """Save the image data as a NIfTI file."""
     nifti_image = nib.Nifti1Image(data, np.eye(4))
     nifti_image.header.get_xyzt_units()
-    nifti_image.to_filename(path.join(INPUT_DIR, filename))
+    nifti_image.to_filename(path.join(filename))
 
-def rename_files(input_path):
+def rename_files():
     """Rename files in the input directory."""
     nnUNet_raw = path.join(input_path, 'nnUNet_raw')
     try:
         mkdir(nnUNet_raw)
     except:
         pass
-    shutil.copy(path.join(input_path, "fused_t1c_t1n.nii.gz"), path.join(nnUNet_raw, 'Brain_0000.nii.gz'))
-    shutil.copy(path.join(input_path, "t2f.nii.gz"), path.join(nnUNet_raw, 'Brain_0001.nii.gz'))
-    shutil.copy(path.join(input_path, "fused_t1c_t2w.nii.gz"), path.join(nnUNet_raw, 'Brain_0002.nii.gz'))
-    shutil.copy(path.join(input_path, "fused_t1c_t2f.nii.gz"), path.join(nnUNet_raw, 'Brain_0003.nii.gz'))
+    shutil.copy(path.join("fused_t1c_t1n.nii.gz"), path.join(nnUNet_raw, 'Brain_0000.nii.gz'))
+    shutil.copy(path.join("t2f.nii.gz"), path.join(nnUNet_raw, 'Brain_0001.nii.gz'))
+    shutil.copy(path.join("fused_t1c_t2w.nii.gz"), path.join(nnUNet_raw, 'Brain_0002.nii.gz'))
+    shutil.copy(path.join("fused_t1c_t2f.nii.gz"), path.join(nnUNet_raw, 'Brain_0003.nii.gz'))
 
 # Main function to prepare the dataset
 
@@ -73,4 +72,4 @@ def prepare_dataset(t1c_path, t1n_path, t2w_path, t2f_path):
     save_nifti_image(fused_t1c_t1n, 'fused_t1c_t1n.nii.gz')
     save_nifti_image(fused_t1c_t2f, 'fused_t1c_t2f.nii.gz')
     save_nifti_image(fused_t1c_t2w, 'fused_t1c_t2w.nii.gz')
-    rename_files(INPUT_DIR)
+    rename_files()
