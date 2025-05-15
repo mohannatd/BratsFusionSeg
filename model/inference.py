@@ -1,6 +1,5 @@
 import torch
 import os
-from data.paths import INPUT_DIR, MODEL_PATH
 def check_cuda():
     if not torch.cuda.is_available():
         raise EnvironmentError("CUDA not available.")
@@ -9,7 +8,7 @@ def check_cuda():
 def run_inference(output_path):
     check_cuda()
     print("Running inference... (placeholder)")
-    nnUNet_raw = os.path.join(INPUT_DIR, 'nnUNet_raw')
+    nnUNet_raw = os.path.join('nnUNet_raw')
     os.environ["nnUNet_results"] = output_path
     os.environ["nnUNet_preprocessed"] = os.path.join('.')
     os.environ["nnUNet_raw"] = os.path.join('.')
