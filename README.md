@@ -43,7 +43,7 @@ docker run --rm --gpus all \
 
 > This assumes your `.nii.gz` files and `output/` folder are inside `/home/ubuntu/brain_data/` on your host machine.
 
-⚠️ **Note:** This process may take approximately **20–30 minutes** to complete due to the multi-modal MRI fusion and preprocessing steps. Please be patient and do not interrupt the container unless an error is shown.
+⚠️ Note: This process may take approximately **20–30 minutes** to complete due to the multi-modal MRI fusion and preprocessing steps. Please be patient and do not interrupt the container unless an error is shown.
 ---
 
 ## Input Files
