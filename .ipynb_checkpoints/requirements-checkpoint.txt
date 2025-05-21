@@ -1,4 +1,0 @@
-nnunetv2
-torch
-torchvision
-opencv-python
